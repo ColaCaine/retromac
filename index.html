@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Mac OS Resource Menu</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: 'Courier New', Courier, monospace;
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        select {
+            font-size: 1.2em;
+            padding: 5px;
+            margin-bottom: 20px;
+        }
+        .resource-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .resource-list li {
+            margin: 10px 0;
+        }
+        .resource-list a {
+            color: #007acc;
+            text-decoration: none;
+        }
+        .resource-list a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Retro Mac OS Resource Menu</h1>
+        <label for="mac-os-version">Select Mac OS Version:</label>
+        <select id="mac-os-version" onchange="showResources()">
+            <option value="os7">Mac OS 7</option>
+            <option value="os8">Mac OS 8</option>
+            <option value="os9">Mac OS 9</option>
+            <option value="osx">Mac OS X</option>
+        </select>
+        <ul id="resource-list" class="resource-list"></ul>
+    </div>
+
+    <script>
+        const resources = {
+            os7: [
+                { name: "System 7.5.5 CD", url: "https://example.com/system7.5.5cd" },
+                { name: "Macintosh Garden - System 7", url: "https://example.com/macgarden7" }
+            ],
+            os8: [
+                { name: "Mac OS 8.1 CD", url: "https://example.com/os8.1cd" },
+                { name: "Macintosh Garden - Mac OS 8", url: "https://example.com/macgarden8" }
+            ],
+            os9: [
+                { name: "Mac OS 9.2.2 CD", url: "https://example.com/os9.2.2cd" },
+                { name: "Macintosh Garden - Mac OS 9", url: "https://example.com/macgarden9" }
+            ],
+            osx: [
+                { name: "Mac OS X 10.4 Tiger CD", url: "https://example.com/osx10.4cd" },
+                { name: "Macintosh Garden - Mac OS X", url: "https://example.com/macgardenx" }
+            ]
+        };
+
+        function showResources() {
+            const version = document.getElementById("mac-os-version").value;
+            const resourceList = document.getElementById("resource-list");
+            resourceList.innerHTML = "";
+
+            resources[version].forEach(resource => {
+                const listItem = document.createElement("li");
+                const link = document.createElement("a");
+                link.href = resource.url;
+                link.textContent = resource.name;
+                listItem.appendChild(link);
+                resourceList.appendChild(listItem);
+            });
+        }
+    </script>
+</body>
+</html>
